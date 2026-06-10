@@ -1,13 +1,18 @@
 import Link from "next/link";
 import { Football, Vuvuzela, KitParade } from "./Decor";
 
+const SITE = "https://alex-fleetwood.com"; // personal site
+
 export default function Home() {
   return (
     <>
       <div className="hero">
         <h1>Build Your Own <span className="u">World Cup</span> Sweepstake</h1>
         <p className="lead">Two mates or forty-eight. We draw the teams, track every game live, and run an
-          absurdly over-engineered scoring system that pays out for backing the underdog. Free, no faff.</p>
+          absurdly over-engineered scoring system that pays out for when the underdog triumphs.</p>
+        <p className="lead" style={{ fontSize: 13.5, marginTop: -2 }}>A free thing made by{" "}
+          <a href={SITE} target="_blank" rel="noopener noreferrer" style={{ color: "var(--blue)", textDecoration: "underline" }}>Alex Fleetwood</a>{" "}
+          with Claude Fable 5.</p>
         <Link href="/new" className="btn">Create a sweepstake →</Link>
       </div>
 
@@ -31,7 +36,17 @@ export default function Home() {
 
       <div className="foot">
         <div className="foot-decor"><Vuvuzela size={44} /><KitParade /><Football size={28} /></div>
-        <div>World Cup 2026 · live scores · free to create &amp; play</div>
+        <div className="cred">Built by <a href={SITE} target="_blank" rel="noopener noreferrer">Alex Fleetwood</a></div>
+        <div className="legal">
+          <div>© {new Date().getFullYear()} Alex Fleetwood · World Cup 2026 · free to create &amp; play</div>
+          <p>For entertainment only. Not affiliated with, endorsed by, or connected to FIFA or any football
+            governing body. This site does not collect, hold, or distribute money — stakes and any payouts are
+            arranged privately between players, who are solely responsible for ensuring their sweepstake complies
+            with the laws where they live (including gambling regulations and age restrictions). Payout amounts
+            shown are <strong>recommendations only</strong> — collecting stakes and settling up is entirely
+            between you and your players. Team data and scores are provided “as is” with no guarantee of accuracy.</p>
+          <p>We&apos;ll only ever use your email to let you know about new builds — never shared, no spam.</p>
+        </div>
       </div>
     </>
   );

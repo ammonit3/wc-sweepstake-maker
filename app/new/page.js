@@ -123,6 +123,7 @@ export default function NewSweep() {
         <div className="ladder-chips">
           {ladder.map((v, i) => <span className="lc" key={i}>{ordinal(i + 1)}: £{v}</span>)}
         </div>
+        <div className="note" style={{ marginTop: 8 }}>A suggested split only — collecting stakes and paying out is up to you and your players.</div>
       </div>
 
       <div className="field">
@@ -132,7 +133,7 @@ export default function NewSweep() {
       <div className="field">
         <label>Your email</label>
         <input type="email" value={creatorEmail} onChange={(e) => setCreatorEmail(e.target.value)} required />
-        <div className="note" style={{ marginTop: 5 }}>Used to register your sweepstake. Your links are shown on the next screen — copy them then.</div>
+        <div className="note" style={{ marginTop: 5 }}>Used to register your sweepstake — your links appear on the next screen. We&apos;ll only ever email you about new builds, never shared, no spam.</div>
       </div>
 
       {/* honeypot — hidden from humans */}
