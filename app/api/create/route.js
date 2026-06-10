@@ -40,7 +40,7 @@ export async function POST(req) {
   };
   await saveSweep(sweep);
 
-  const base = process.env.APP_URL || new URL(req.url).origin;
+  const base = (process.env.APP_URL || new URL(req.url).origin).replace(/\/+$/, "");
   const viewUrl = `${base}/s/${sweep.id}`;
   const adminUrl = `${base}/s/${sweep.id}/admin?t=${sweep.adminToken}`;
   const email = await sendAdminLink({ to: sweep.creatorEmail, creatorName: sweep.creatorName, sweepName: sweep.name, viewUrl, adminUrl });
