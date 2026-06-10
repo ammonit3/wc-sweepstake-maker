@@ -69,12 +69,12 @@ export default function NewSweep() {
       <div style={{ maxWidth: 620, margin: "0 auto" }}>
         <h1>You&apos;re <span className="u">in!</span></h1>
         <div className="success">
-          <p style={{ marginTop: 0 }}><strong>{name}</strong> is live and the draw is done. {result.emailed ? "We've emailed your admin link too." : ""}</p>
+          <p style={{ marginTop: 0 }}><strong>{name}</strong> is live and the draw is done. {result.emailed ? "We've emailed your links too." : ""}</p>
           <label style={{ fontWeight: 800, fontSize: 12 }}>SHARE THIS WITH YOUR PLAYERS (view-only)</label>
-          <div className="linkbox"><input readOnly value={result.viewUrl} onFocus={(e) => e.target.select()} /><a className="btn" href={result.viewUrl}>Open</a></div>
-          <label style={{ fontWeight: 800, fontSize: 12 }}>KEEP THIS PRIVATE — YOUR ADMIN LINK</label>
-          <div className="linkbox"><input readOnly value={result.adminUrl} onFocus={(e) => e.target.select()} /></div>
-          <p className="note">Tip: bookmark the admin link. Scores and standings update automatically once the tournament starts.</p>
+          <div className="linkbox"><input readOnly value={result.viewUrl} onFocus={(e) => e.target.select()} /><CopyButton text={result.viewUrl} /><a className="btn" href={result.viewUrl}>Open</a></div>
+          <label style={{ fontWeight: 800, fontSize: 12 }}>⚠️ KEEP THIS PRIVATE — YOUR ADMIN LINK</label>
+          <div className="linkbox"><input readOnly value={result.adminUrl} onFocus={(e) => e.target.select()} /><CopyButton text={result.adminUrl} /></div>
+          <p className="note"><strong>Copy your admin link now</strong> — it&apos;s only shown here. Bookmark it to rename or delete later. Scores update automatically once the tournament starts.</p>
         </div>
       </div>
     );
@@ -130,8 +130,9 @@ export default function NewSweep() {
         <input type="text" value={creatorName} maxLength={80} onChange={(e) => setCreatorName(e.target.value)} required />
       </div>
       <div className="field">
-        <label>Your email (we&apos;ll send your private admin link)</label>
+        <label>Your email</label>
         <input type="email" value={creatorEmail} onChange={(e) => setCreatorEmail(e.target.value)} required />
+        <div className="note" style={{ marginTop: 5 }}>Used to register your sweepstake. Your links are shown on the next screen — copy them then.</div>
       </div>
 
       {/* honeypot — hidden from humans */}
@@ -148,4 +149,14 @@ export default function NewSweep() {
 function ordinal(n) {
   const s = ["th", "st", "nd", "rd"], v = n % 100;
   return n + (s[(v - 20) % 10] || s[v] || s[0]);
+}
+
+function CopyButton({ text }) {
+  const [done, setDone] = useState(false);
+  return (
+    <button type="button" className="btn alt" style={{ fontSize: 13, padding: "9px 14px" }}
+      onClick={async () => { try { await navigator.clipboard.writeText(text); setDone(true); setTimeout(() => setDone(false), 1500); } catch {} }}>
+      {done ? "Copied!" : "Copy"}
+    </button>
+  );
 }

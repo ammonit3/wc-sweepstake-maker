@@ -16,7 +16,7 @@ gh repo create ammonit3/wc-sweepstake-maker --public --source=. --push
 ## 2. Get the free keys (do these in browser tabs)
 1. **football-data** — https://www.football-data.org/client/register → copy the API token.
 2. **Cloudflare Turnstile** — https://dash.cloudflare.com → Turnstile → Add site (any domain incl. `*.vercel.app`). Copy the **Site key** and **Secret key**.
-3. **Resend** — https://resend.com → API Keys → create one. (Optional. To email *any* address you must verify a domain in Resend; until then it only reliably emails your own account address. The admin link is always shown on screen regardless.)
+3. **Resend** — **skip this.** Email is off by default: links are shown on screen at creation, and the email field is just sign-up/tracking. Only add a `RESEND_API_KEY` (and verify a sending domain) later if you want the links emailed too.
 4. **OWNER_TOKEN** — make up a long random string (e.g. from a password manager).
 
 ## 3. Vercel

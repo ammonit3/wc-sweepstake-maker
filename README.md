@@ -12,7 +12,7 @@ npm run dev    # http://localhost:3000
 Works with **no env keys**: KV falls back to an in-memory store, Turnstile and Resend are skipped, and live scores fall back to bundled fixtures. Great for trying the create flow and the sweepstake view.
 
 ## How it works
-- `/new` → create form (players, stake, live pot + ladder preview, name/email, Turnstile) → `POST /api/create` runs the draw, saves to KV, emails the admin link.
+- `/new` → create form (players, stake, live pot + ladder preview, name/email, Turnstile) → `POST /api/create` runs the draw, saves to KV, and **shows the share + admin links on screen** (email capture is for sign-up/tracking; sending is optional — see below).
 - `/s/[id]` → the sweepstake (leaderboard, players, fixtures, rules) — ISR-cached, live scores client-side.
 - `/s/[id]/admin?t=token` → rename/delete (creator only).
 - `/admin?t=OWNER_TOKEN` → your private usage dashboard.
