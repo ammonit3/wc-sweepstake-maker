@@ -313,7 +313,7 @@ function RulesTab({ sweep }) {
         <tr><td><strong>Perfect Group</strong> — won all 3 group games</td><td className="n">+{k.PERFECT_GROUP}</td></tr>
         <tr><td><strong>Group of Death</strong> — advanced from the single strongest group</td><td className="n">+{k.GROUP_OF_DEATH}</td></tr>
       </tbody></table>
-      <p className="note">Ties on a trophy: everyone tied collects it.</p>
+      <p className="note">Goal Machine and Iron Curtain are whole-tournament awards, settled at the <strong>final whistle of the final</strong> — so running totals only ever climb during the tournament. Ties on a trophy: everyone tied collects it.</p>
 
       <h2>5 · The money</h2>
       <p className="note">£{stake} each = a <strong>£{sweep.pot} pot</strong>, paid by <strong>final finishing position</strong>:</p>
